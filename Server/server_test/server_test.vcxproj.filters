@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="socket_include">
+      <UniqueIdentifier>{ac2b9f97-da1a-49d7-b2a2-7678ba5d5666}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerSocket.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerSocketClient.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\socket_include\BitStream.cpp">
+      <Filter>socket_include</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\socket_include\TcpSocket.cpp">
+      <Filter>socket_include</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ServerSocket.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerSocketClient.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="singleton.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\socket_include\BaseSocket.h">
+      <Filter>socket_include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\socket_include\BitStream.h">
+      <Filter>socket_include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\socket_include\SendPacket.h">
+      <Filter>socket_include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\socket_include\singleton.h">
+      <Filter>socket_include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\socket_include\TcpSocket.h">
+      <Filter>socket_include</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
