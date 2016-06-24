@@ -9,14 +9,15 @@ public:
 
 
 	char* getPacketBuf()			{return m_packetBuf;}
-	void  setPacketSize(int size)	{m_packetSize = size;}
 	void  addPacketPos(int pos)		{m_packetPos += pos;}
 	void  addPacketBuf(const char* addBuf, int addSize);
 	int getPacketSize()				{return m_packetSize;}
 	int getPacketPos()				{return m_packetPos;}
 
+	virtual void  setMaxPacketSize(int maxSize);
+
 	virtual void handlePacket() = 0;
-	void handleReceive(char* pRecvBuf, int nRecvSize);
+	void onReceive(char* pRecvBuf, int nRecvSize);
 
 protected:
 

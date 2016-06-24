@@ -1,0 +1,61 @@
+﻿生成启动时间为 2016/6/21 14:38:42。
+     1>项目“D:\serverTest1\Server\server_test\server_test.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I../../socket_include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp ServerSocket.cpp ServerSocketClient.cpp ..\..\socket_include\BitStream.cpp ..\..\socket_include\TcpSocket.cpp
+         TcpSocket.cpp
+     1>d:\servertest1\socket_include\tcpsocket.cpp(56): warning C4018: “<”: 有符号/无符号不匹配
+         BitStream.cpp
+         ServerSocketClient.cpp
+         ServerSocket.cpp
+     1>d:\servertest1\server\server_test\serversocket.cpp(146): error C2660: “ServerSocket::postEvent”: 函数不接受 1 个参数
+     1>d:\servertest1\server\server_test\serversocket.cpp(154): error C2660: “ServerSocket::postEvent”: 函数不接受 1 个参数
+     1>d:\servertest1\server\server_test\serversocket.cpp(161): error C2065: “ClientConnect”: 未声明的标识符
+     1>d:\servertest1\server\server_test\serversocket.cpp(161): error C2146: 语法错误: 缺少“;”(在标识符“clientConnect”的前面)
+     1>d:\servertest1\server\server_test\serversocket.cpp(161): error C2065: “clientConnect”: 未声明的标识符
+     1>d:\servertest1\server\server_test\serversocket.cpp(162): error C2065: “clientConnect”: 未声明的标识符
+     1>d:\servertest1\server\server_test\serversocket.cpp(162): error C2228: “.clientSockAddr”的左边必须有类/结构/联合
+                 类型是“unknown-type”
+     1>d:\servertest1\server\server_test\serversocket.cpp(163): error C2065: “clientConnect”: 未声明的标识符
+     1>d:\servertest1\server\server_test\serversocket.cpp(163): error C2228: “.m_socket”的左边必须有类/结构/联合
+                 类型是“unknown-type”
+     1>d:\servertest1\server\server_test\serversocket.cpp(163): error C2228: “.clientSockAddr”的左边必须有类/结构/联合
+                 类型是“unknown-type”
+     1>d:\servertest1\server\server_test\serversocket.cpp(163): error C2660: “accept”: 函数不接受 2 个参数
+     1>d:\servertest1\server\server_test\serversocket.cpp(164): error C2065: “clientConnect”: 未声明的标识符
+     1>d:\servertest1\server\server_test\serversocket.cpp(164): error C2228: “.m_socket”的左边必须有类/结构/联合
+                 类型是“unknown-type”
+     1>d:\servertest1\server\server_test\serversocket.cpp(168): error C2065: “clientConnect”: 未声明的标识符
+     1>d:\servertest1\server\server_test\serversocket.cpp(168): error C2228: “.clientSockAddr”的左边必须有类/结构/联合
+                 类型是“unknown-type”
+     1>d:\servertest1\server\server_test\serversocket.cpp(168): error C2228: “.sin_addr”的左边必须有类/结构/联合
+     1>d:\servertest1\server\server_test\serversocket.cpp(170): error C2039: “addClient”: 不是“ClientConnectManager”的成员
+                 d:\servertest1\server\server_test\serversocket.h(103) : 参见“ClientConnectManager”的声明
+     1>d:\servertest1\server\server_test\serversocket.cpp(170): error C2065: “clientConnect”: 未声明的标识符
+     1>d:\servertest1\server\server_test\serversocket.cpp(171): error C2065: “ClientConnect”: 未声明的标识符
+     1>d:\servertest1\server\server_test\serversocket.cpp(171): error C2065: “pClientConnect”: 未声明的标识符
+     1>d:\servertest1\server\server_test\serversocket.cpp(171): error C2039: “getClient”: 不是“ClientConnectManager”的成员
+                 d:\servertest1\server\server_test\serversocket.h(103) : 参见“ClientConnectManager”的声明
+     1>d:\servertest1\server\server_test\serversocket.cpp(173): error C2065: “pClientConnect”: 未声明的标识符
+     1>d:\servertest1\server\server_test\serversocket.cpp(173): error C2227: “->m_socket”的左边必须指向类/结构/联合/泛型类型
+                 类型是“unknown-type”
+     1>d:\servertest1\server\server_test\serversocket.cpp(183): error C2065: “MAX_TCPBUFFER_SIZE”: 未声明的标识符
+     1>d:\servertest1\server\server_test\serversocket.cpp(184): error C2039: “buffer”: 不是“OVERLAPPED_PLUS”的成员
+                 d:\servertest1\server\server_test\serversocket.h(10) : 参见“OVERLAPPED_PLUS”的声明
+     1>d:\servertest1\server\server_test\serversocket.cpp(189): error C2065: “pClientConnect”: 未声明的标识符
+     1>d:\servertest1\server\server_test\serversocket.cpp(189): error C2227: “->m_socket”的左边必须指向类/结构/联合/泛型类型
+                 类型是“unknown-type”
+     1>d:\servertest1\server\server_test\serversocket.cpp(275): warning C4800: “char”: 将值强制为布尔值“true”或“false”(性能警告)
+     1>d:\servertest1\server\server_test\serversocket.cpp(297): error C2597: 对非静态成员“BaseSocket::m_maxPacketSize”的非法引用
+     1>d:\servertest1\server\server_test\serversocket.cpp(297): error C3867: “BaseSocket::m_maxPacketSize”:  函数调用缺少参数列表；请使用“&BaseSocket::m_maxPacketSize”创建指向成员的指针
+     1>d:\servertest1\server\server_test\serversocket.cpp(297): error C2568: “=”: 无法解析函数重载
+                 无法从以前的错误中恢复；正在停止编译
+         main.cpp
+     1>d:\servertest1\server\server_test\main.cpp(10): error C3861: “initWinSock”:  找不到标识符
+     1>d:\servertest1\server\server_test\main.cpp(12): error C2039: “startListen”: 不是“ServerSocket”的成员
+                 d:\servertest1\server\server_test\serversocket.h(30) : 参见“ServerSocket”的声明
+         正在生成代码...
+     1>已完成生成项目“D:\serverTest1\Server\server_test\server_test.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:04.67

@@ -4,8 +4,7 @@
 #include "TcpSocket.h"
 
 using namespace stdext;
-
-#define MAX_COMPLETION_THREAD_NUM 10
+class ServerSocketClient;
 
 struct OVERLAPPED_PLUS
 {
@@ -78,11 +77,9 @@ public:
 
 	void postEvent(int Msg,void *pData);
 
-
 	static unsigned int WINAPI addClientMonitorThread(LPVOID lpParam);
 	static unsigned int WINAPI IOCPRecvThread(LPVOID lpParam);
 
-protected:
 	OVERLAPPED_PLUS* createBuffer(int clientId, int size);
 	void releaseBuffer(OVERLAPPED_PLUS* ov);
 

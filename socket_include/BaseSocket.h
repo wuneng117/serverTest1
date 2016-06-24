@@ -22,7 +22,7 @@ public:
 	BaseSocket();
 	~BaseSocket(){};
 
-	void setMaxPacketSize(int maxSize)				{m_maxPacketSize = maxSize;}
+	virtual void setMaxPacketSize(int maxSize)				{m_maxPacketSize = maxSize;}
 	void setIdleTimeout(unsigned int idleTimeout)		{m_idleTimeout = idleTimeout;}
 	void setConnectTimeout(unsigned int connectTimeout)	{m_connectTimeout = connectTimeout;}
 	unsigned int getIdleTimeout()					{return m_idleTimeout;}

@@ -33,6 +33,9 @@
     <ClCompile Include="..\..\socket_include\TcpSocket.cpp">
       <Filter>socket_include</Filter>
     </ClCompile>
+    <ClCompile Include="BasePacket.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ServerSocket.h">
@@ -50,14 +53,14 @@
     <ClInclude Include="..\..\socket_include\BitStream.h">
       <Filter>socket_include</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\socket_include\SendPacket.h">
-      <Filter>socket_include</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\socket_include\singleton.h">
       <Filter>socket_include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\socket_include\TcpSocket.h">
       <Filter>socket_include</Filter>
+    </ClInclude>
+    <ClInclude Include="BasePacket.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

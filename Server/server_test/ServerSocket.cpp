@@ -253,11 +253,11 @@ unsigned int ServerSocket::IOCPRecvThread(LPVOID lpParam)
 		}
 
 		else if(opCode == OP_ADDCLIENT)
-			//pServer->addClient(ADD_CLIENT_NUM);这个函数用途不一样，要改
-		else if(opCode == OP_MAINTENANCE)
-			//pServer->OP_MAINTENANCE(); //维护所有客户端
-		else if(opCode == OP_SEND)
-			//pClient->sendPacket((OVERLAPPED_PLUS*)ov)	//发送数据处理
+			pServer->addClient(ADD_CLIENT_NUM);
+		//else if(opCode == OP_MAINTENANCE)
+		//	//pServer->OP_MAINTENANCE(); //维护所有客户端
+		//else if(opCode == OP_SEND)
+		//	//pClient->sendPacket((OVERLAPPED_PLUS*)ov)	//发送数据处理
 		else if(opCode == OP_RESTART)
 		{
 			free(ov);
@@ -282,8 +282,8 @@ unsigned int ServerSocket::IOCPRecvThread(LPVOID lpParam)
 				bConnectSuccess = true;
 				if(pClient->getState() == ServerSocketClient::SSF_ACCEPTING)
 					bConnectSuccess = pClient->handleConnect(ov, dwByteCountBak);
-				if(bConnectSuccess)
-					pClient->handleReceive();	
+				if (bConnectSuccess)
+					pClient->onReceive(ov->WsaBuf.buf, dwByteCountBak);
 			}
 		}
 

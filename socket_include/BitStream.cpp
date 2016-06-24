@@ -2,18 +2,6 @@
 #include <string.h>
 
 #include "BitStream.h"
-#include "SendPacket.h"
-
-SendPacketHead* BitStream::buildHead(int messageType)
-{
-	SendPacketHead* sendHead = reinterpret_cast<SendPacketHead*>(getBuffer());
-	sendHead->m_packetType = messageType;
-	sendHead->m_packetSize = 0;
-
-	m_size += sizeof(SendPacketHead);
-
-	return sendHead;
-}
 
 void BitStream::writeByte(unsigned int byteSize, const void *bytePtr)
 {

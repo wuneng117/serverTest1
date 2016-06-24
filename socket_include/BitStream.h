@@ -15,7 +15,6 @@ public:
 
 	}
 
-	SendPacketHead* buildHead(int messageType = 0);
 	void setPosition(unsigned int pos) {m_size = pos;}
 
 	void writeByte(unsigned int byteSize, const void *bytePtr);

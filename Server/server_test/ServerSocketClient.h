@@ -57,7 +57,7 @@ public:
 
 	void postEvent(int msg, OVERLAPPED_PLUS* data);
 
-	void handleConnect(OVERLAPPED_PLUS* ov, int byteReceived);
+	bool handleConnect(OVERLAPPED_PLUS* ov, int byteReceived);
 	virtual void handlePacket();
 	bool sendPacket(const char* buffer, int buffer_size);
 };

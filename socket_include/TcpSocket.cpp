@@ -17,9 +17,10 @@ TcpSocket::~TcpSocket()
 void TcpSocket::setMaxPacketSize(int maxSize)
 {
 	m_maxPacketSize = maxSize;
+	m_packetBuf = new char[maxSize];
 }
 
-void TcpSocket::handleReceive(char* pRecvBuf, int nRecvSize)
+void TcpSocket::onReceive(char* pRecvBuf, int nRecvSize)
 {
 	int nRecvPos = 0;
 

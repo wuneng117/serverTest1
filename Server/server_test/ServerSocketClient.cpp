@@ -2,7 +2,6 @@
 
 #include "ServerSocketClient.h"
 #include "BitStream.h"
-#include "SendPacket.h"
 #include "ServerSocket.h"
 
 #pragma comment(lib, "ws2_32.lib")
@@ -63,7 +62,7 @@ void ServerSocketClient::start()
 
 	resetVar();
 
-	m_socket = WSASocket(AF_INET, SOCK_STREAM,, 0, NULL, NULL, WSA_FLAG_OVERLAPPED);
+	m_socket = WSASocket(AF_INET, SOCK_STREAM, 0, NULL, NULL, WSA_FLAG_OVERLAPPED);
 	if(m_socket == InvalidSocket)
 		return;
 	
@@ -71,7 +70,7 @@ void ServerSocketClient::start()
 	m_accpetOv = ov;
 
 	DWORD dwBytesRecvd;
-	int ret = AcceptEx(m_listenSocket, m_socket, ov->WsaBuf.buf, m_maxPacketSize, sizeof(sockaddr_in)+16, sizeof(sockaddr_in)+16, &dwBytesRecvd, ov);
+	int ret = AcceptEx(m_listenSocket, m_socket, ov->WsaBuf.buf, m_maxPacketSize, sizeof(sockaddr_in)+16, sizeof(sockaddr_in)+16, &dwBytesRecvd, &(ov->overlapped));
 	if(ret != 0)
 	{
 		DWORD error = GetLastError();
@@ -124,12 +123,12 @@ void ServerSocketClient::postEvent(int msg, OVERLAPPED_PLUS* data)
 		free(data);
 }
 
-void ServerSocketClient::handleConnect(OVERLAPPED_PLUS* ov, int byteReceived)
+bool ServerSocketClient::handleConnect(OVERLAPPED_PLUS* ov, int byteReceived)
 {
 	if(m_state != SSF_ACCEPTING)
 	{
 		free(ov);
-		return;
+		return false;
 	}
 
 	m_accpetOv = NULL;
@@ -140,7 +139,7 @@ void ServerSocketClient::handleConnect(OVERLAPPED_PLUS* ov, int byteReceived)
 	{
 		printWSAError("handleConnect() failed");
 		postEvent(ServerSocket::OP_RESTART, ov);
-
+		return false;
 	}
 
 	m_state = SSF_CONNECTED;
@@ -164,9 +163,7 @@ void ServerSocketClient::handleConnect(OVERLAPPED_PLUS* ov, int byteReceived)
 		printWSAError("set TCP_NODELAY failed");
 	}
 
-	//ÊÕÊý¾Ý
-	handleReceive(ov->WsaBuf.buf, byteReceived);
-
+	return true;
 }
 
 void ServerSocketClient::handlePacket()
@@ -186,7 +183,7 @@ void ServerSocketClient::handlePacket()
 
 	}
 
-	ZeroMemory(m_packetBuf, MAX_BITSTREAM_SIZE);
+	ZeroMemory(m_packetBuf, m_maxPacketSize);
 	m_packetPos = 0;
 	m_packetSize = 0;
 }

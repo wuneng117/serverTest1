@@ -18,8 +18,8 @@ int _tmain(int argc, _TCHAR* argv[])
 		
 		pClientSock->process();
 
-		char sendBuffer[MAX_BITSTREAM_SIZE] = {0};
-		BitStream stream(sendBuffer, MAX_BITSTREAM_SIZE);
+		char sendBuffer[MAX_PACKET_SIZE] = {0};
+		BitStream stream(sendBuffer, MAX_PACKET_SIZE);
 		SendPacketHead* head  = stream.buildHead();
 
 		char szBuffer[1024];

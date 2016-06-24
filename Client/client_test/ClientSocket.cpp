@@ -10,6 +10,8 @@
 ClientSocket::ClientSocket()
 {
 	m_socketState = InvalidState;
+	setMaxPacketSize(MAX_PACKET_SIZE);
+	m_recvBuf = new char[m_maxPacketSize];
 }
 
 ClientSocket::~ClientSocket()
@@ -48,12 +50,12 @@ int ClientSocket::openConnectTo(const char* ip, unsigned short port)
 	return m_socket;
 }
 
-void ClientSocket::onReceive()
+void ClientSocket::handleReceive()
 {
-	char szBuff[MAX_TCPBUFFER_SIZE] = {0};
+	memset(m_packetBuf, 0, m_maxPacketSize);
 	int ret = 0;
 
-	ret = recv(m_socket, szBuff, MAX_TCPBUFFER_SIZE, 0);
+	ret = recv(m_socket, m_packetBuf, m_maxPacketSize, 0);
 	if(ret< 0)
 	{
 		printf("recv() failed! error:%d\n", WSAGetLastError());
@@ -66,7 +68,7 @@ void ClientSocket::onReceive()
 		return;
 
 	//把数据写入缓存里
-	handleReceive(szBuff, ret);
+	onReceive(m_packetBuf, ret);
 }
 
 bool ClientSocket::sendPacket(const char* buffer, int buffer_size)
@@ -107,7 +109,7 @@ void ClientSocket::handlePacket()
 {
 
 	//用完清除
-	memset(m_packetBuf, 0, MAX_BITSTREAM_SIZE);
+	memset(m_packetBuf, 0, m_maxPacketSize);
 	m_packetSize = 0;
 	m_packetPos = 0;
 }
@@ -160,6 +162,6 @@ void ClientSocket::process()
 
 	else if(m_socketState == Connected)
 	{
-		onReceive();
+		handleReceive();
 	}
 }

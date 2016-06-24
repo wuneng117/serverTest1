@@ -3,6 +3,8 @@
 #include "TcpSocket.h"
 #include <stdio.h>
 
+const int MAX_PACKET_SIZE = 32 * 1024;
+
 class ClientSocket:public TcpSocket
 {
 public:
@@ -15,7 +17,7 @@ public:
 
 private:
 	sockaddr_in m_clientSockAddr;
-
+	char* m_recvBuf;	//Ω” ’ª∫¥Ê«¯
 public:
 	int m_socketState;
 	ClientSocket();
@@ -23,7 +25,7 @@ public:
 
 	int openConnectTo(const char* ip, unsigned short port);
 
-	void onReceive();
+	void handleReceive();
 	bool sendPacket(const char* buffer, int buffer_size);
 
 	virtual void handlePacket();
